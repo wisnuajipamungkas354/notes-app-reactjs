@@ -16,7 +16,6 @@ class NotesApp extends React.Component {
       title: '',
       body: '',
       search: '',
-      resultSearch: [],
     };
 
     this.onSearchHandler = this.onSearchHandler.bind(this);
@@ -26,18 +25,10 @@ class NotesApp extends React.Component {
     this.onChangeInput = this.onChangeInput.bind(this);
   }
 
-  onSearchHandler = (event) => {
-    const keyword = event.target.value.toLocaleLowerCase();
-    const resultData = this.state.data.filter((item) => {
-      if(item.title.toLocaleLowerCase().includes(keyword)){
-        return item.id;
-      }
-    });
-    
+  onSearchHandler = (event) => {    
     this.setState(() => {
       return {
         search: event.target.value,
-        resultSearch: resultData,
       };
     });
   }
